@@ -41,6 +41,35 @@ struct {
 	table<string, NoSpawnArea> noSpawnAreas
 } file
 
+// TODO - Spoon
+/*
+make function that rates the spawnzones every x seconds
+and switches the spawnzone teams around 
+
+make sure that people dont spawn in the same spawnpoint repeatedly
+maybe force player to rotate through all the spawns in a spawnzone before a spawn point can be repeated?
+might be overkill tho
+
+*/
+
+void function Spawn_ChangeZones_Threaded()
+{
+        while ( true )
+        {
+                wait 30.0
+                bool hasFlippedSpawns = false
+                // iterate through teams
+                // temp, change 3 to number of teams
+                for (int i = 1; i < 3; i++)
+                {
+                        // get average position of players on team who are alive
+                        // get closest spawnzone to that position
+                        // change to use that spawnzone
+                        // if that spawnzone was an enemy one, swap spawnzones with that team
+                }
+        }
+}
+
 void function Spawn_Init()
 {	
 	AddSpawnCallback( "info_spawnpoint_human", InitSpawnpoint )
