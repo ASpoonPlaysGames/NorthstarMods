@@ -22,11 +22,10 @@ void function CServerGameDLL_ProcessMessageStartThread(int playerIndex, string m
 void function CServerGameDLL_OnReceivedSayTextMessageCallback(int playerIndex, string message, bool isTeam)
 {
 	entity player = GetPlayerByIndex(playerIndex)
-	if (player == null || !player.hasConnected) {
+	if (player == null) {
 		print("Ignored chat message from invalid player index " + playerIndex + ": " + message)
 		return
 	}
-	print("Received message from " + player + "(" + player.GetUID() + "): " + message)
 
 	ClServer_MessageStruct localMessage
 	localMessage.message = message
