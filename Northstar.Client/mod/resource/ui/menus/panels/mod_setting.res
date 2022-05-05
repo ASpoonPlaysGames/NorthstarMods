@@ -2,7 +2,7 @@
 {
     BtnMod
     {
-				ControlName Label
+        ControlName Label
         InheritProperties RuiSmallButton
         labelText "Mod"
 
@@ -17,7 +17,7 @@
     {
         ControlName RuiButton
         InheritProperties RuiSmallButton
-				style DialogListButton
+        style DialogListButton
         labelText ""
 
         zpos 4
@@ -81,8 +81,8 @@
     // we're getting to the bottom of this :)
     BottomLine
     {
-				ControlName ImagePanel
-				InheritProperties MenuTopBar
+        ControlName ImagePanel
+        InheritProperties MenuTopBar
         ypos 0
         wide %100
         pin_to_sibling BtnMod
