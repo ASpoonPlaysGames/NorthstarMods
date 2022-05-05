@@ -77,6 +77,9 @@ void function InitMapsMenu()
 		AddButtonEventHandler( button, UIE_CLICK, MapButton_Activate )
 		AddButtonEventHandler( button, UIE_GET_FOCUS, MapButton_Focus )
 	}
+	
+	
+	FilterMapsArray()
 }
 
 
@@ -130,12 +133,8 @@ void function OnHitDummyBottom( var button )
 		
 	file.scrollOffset += 1
 	
-	int compensate = 0
-	if ( file.mapsArrayFiltered.len() % 3 != 0 )
-		compensate = 1
-	
 	if ((file.scrollOffset + BUTTONS_PER_PAGE) * 3 > file.mapsArrayFiltered.len())
-		file.scrollOffset = (file.mapsArrayFiltered.len() - BUTTONS_PER_PAGE * 3) / 3 + compensate
+		file.scrollOffset = (file.mapsArrayFiltered.len() - BUTTONS_PER_PAGE * 3) / 3 + 1
 	
 	UpdateMapsGrid()
 	UpdateListSliderPosition()
@@ -261,6 +260,7 @@ void function FilterMapsArray()
 	string searchTerm = Hud_GetUTF8Text( Hud_GetChild( file.menu, "BtnMapsSearch" ) )
 	
 	bool useSearch =  searchTerm != ""
+	
 	bool hideLocked = bool( GetConVarInt( "filter_map_hide_locked" ) )
 	
 	foreach ( string map in GetPrivateMatchMaps() )
@@ -321,10 +321,6 @@ bool function IsLocked( string map )
 		}
 	}
 	
-	if ( !PrivateMatch_IsValidMapModeCombo( map, PrivateMatch_GetSelectedMode() ) )
-		return true
-	
-	
 	return false
 }
 
@@ -379,11 +375,7 @@ void function SliderBarUpdate()
 	Hud_SetPos( sliderPanel , 2, newPos )
 	Hud_SetPos( movementCapture , 2, newPos )
 
-	int compensate = 0
-	if ( file.mapsArrayFiltered.len() % 3 != 0 )
-		compensate = 1
-
-	file.scrollOffset = -int( ( (newPos - minYPos) / useableSpace ) * ( file.mapsArrayFiltered.len() / 3 + compensate - BUTTONS_PER_PAGE) )
+	file.scrollOffset = -int( ( (newPos - minYPos) / useableSpace ) * ( file.mapsArrayFiltered.len() / 3 + 1 - BUTTONS_PER_PAGE) )
 	UpdateMapsGrid()
 }
 
@@ -418,11 +410,7 @@ void function UpdateListSliderPosition()
 	var sliderPanel = Hud_GetChild( file.menu , "BtnMapGridSliderPanel" )
 	var movementCapture = Hud_GetChild( file.menu , "MouseMovementCapture" )
 	
-	int compensate = 0
-	if ( file.mapsArrayFiltered.len() % 3 != 0 )
-		compensate = 1
-	
-	float maps = float ( file.mapsArrayFiltered.len() / 3 + compensate )
+	float maps = float ( file.mapsArrayFiltered.len() / 3 + 1 )
 
 	float minYPos = -42.0 * (GetScreenSize()[1] / 1080.0)
 	float useableSpace = (582.0 * (GetScreenSize()[1] / 1080.0) - Hud_GetHeight( sliderPanel ))
@@ -441,10 +429,7 @@ void function UpdateListSliderPosition()
 void function OnDownArrowSelected( var button )
 {
 	if ( file.mapsArrayFiltered.len() <= BUTTONS_PER_PAGE || file.mapsArrayFiltered.len() <= 12 ) return
-	if ( file.scrollOffset + 5 > file.mapsArrayFiltered.len() / 3 && file.mapsArrayFiltered.len() % 3 == 0 ) return
-	
 	file.scrollOffset += 1
-
 	if ((file.scrollOffset + BUTTONS_PER_PAGE) * 3 > file.mapsArrayFiltered.len()) {
 		file.scrollOffset = (file.mapsArrayFiltered.len() - BUTTONS_PER_PAGE * 3) / 3 + 1
 	}
