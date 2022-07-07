@@ -559,15 +559,28 @@ void function TryAuthWithLocalServer()
 	if ( NSWasAuthSuccessful() )
 	{
 		NSCompleteAuthWithLocalServer()
+		if ( GetConVarString( "mp_gamemode" ) == "solo" )
+			SetConVarString( "mp_gamemode", "tdm" )
+
+		CloseAllDialogs()
+
+		ClientCommand( "setplaylist tdm" )
+		ClientCommand( "map mp_lobby" )
 	}
+	else 
+	{
+		CloseAllDialogs()
 
-	if ( GetConVarString( "mp_gamemode" ) == "solo" )
-		SetConVarString( "mp_gamemode", "tdm" )
+		var reason = NSGetAuthFailReason()
 
-	CloseAllDialogs()
+		DialogData dialogData
+		dialogData.image = $"ui/menu/common/dialog_error"
+		dialogData.header = "#ERROR"
+		dialogData.message = Localize("#NS_SERVERBROWSER_CONNECTIONFAILED") + "\nERROR: " + reason  + "\n" + Localize("#" + reason)
 
-	ClientCommand( "setplaylist tdm" )
-	ClientCommand( "map mp_lobby" )
+		AddDialogButton( dialogData, "#OK", null )
+		OpenDialog( dialogData )
+	}
 }
 
 void function CancelNSLocalAuth()
@@ -926,7 +939,7 @@ void function SpotlightButton_Activate( var button )
 	else
 	{
 		// discord links don't work in origin overlay
-		if ( link.find( "https://discord.gg" ) == 0 || link == "https://northstar.tf/discord" )
+		if ( link.find( "https://discord.gg" ) == 0 || link == "https://northstar.tf/discord" || link == "https://northstar.tf/wiki" )
 			LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )
 		else
 			LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_MUTEGAME )
