@@ -27,11 +27,7 @@ HarvesterStruct function SpawnHarvester(vector origin,vector angles,int health,i
     harvester.EnableAttackableByAI( 30, 0, AI_AP_FLAG_NONE )
     SetObjectCanBeMeleed( harvester, false )
     SetTeam(harvester,team)
-    // create dangerous area to all AI because we dont want any AI clipping into the harvester ever
-    // radius of 90 cos thats like 7.5 metres? AI shouldnt rally need to get closer than that (except nuke titans and stalkers)
-    // stalkers dont care about dangerous areas
-    // nuke titan detonation radius is larger than 90
-    AI_CreateDangerousArea_Static( harvester, null, 90, TEAM_INVALID, true, true, origin )
+    
     DispatchSpawn( harvester )
     
     SetGlobalNetEnt("FD_activeHarvester",harvester)
@@ -41,6 +37,12 @@ HarvesterStruct function SpawnHarvester(vector origin,vector angles,int health,i
     blackbox.Solid()
     // blackbox.kv.CollisionGroup = TRACE_COLLISION_GROUP_PLAYER
     ToggleNPCPathsForEntity( blackbox, false )				
+
+    // create dangerous area to all AI because we dont want any AI clipping into the harvester ever
+    // radius of 90 cos thats like 7.5 metres? AI shouldnt rally need to get closer than that (except nuke titans and stalkers)
+    // stalkers dont care about dangerous areas
+    // nuke titan detonation radius is larger than 90
+    AI_CreateDangerousArea_Static( blackbox, null, 90, TEAM_INVALID, true, true, origin )
     
     entity rings = CreatePropDynamic(MODEL_HARVESTER_TOWER_RINGS,origin,angles,6)
     thread PlayAnim( rings, "generator_cycle_fast" )
