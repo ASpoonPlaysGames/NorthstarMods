@@ -296,6 +296,30 @@ Press Yes if you agree to this. This choice can be changed in the mods menu at a
 		"INGAME_PLAYERS" "Players: ^6BA6C400%s1"
 		"TOTAL_SERVERS" "Servers: ^C46C6C00%s1"
 
+		// server browser regions
+		"CANADA_NORTH" "CA North"
+		"CANADA_EAST" "CA East"
+		"CANADA_WEST" "CA West"
+		"CANADA" "CA"
+
+		"CHINA" "CN"
+
+		"RUSSIA" "RU"
+
+		"AUSTRALIA" "AUS"
+
+		"EUROPE_NORTH" "EU North"
+		"EUROPE_EAST" "EU East"
+		"EUROPE_SOUTH" "EU South"
+		"EUROPE_WEST" "EU West"
+		"EUROPE" "EU"
+
+		"US_NORTH" "US North"
+		"US_EAST" "US East"
+		"US_SOUTH" "US South"
+		"US_WEST" "US West"
+		"US" "US"
+
 		// Mods menu
 		"SHOW" "Show"
 		"SHOW_ALL" "All"
