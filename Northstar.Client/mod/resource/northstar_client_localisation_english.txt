@@ -296,29 +296,41 @@ Press Yes if you agree to this. This choice can be changed in the mods menu at a
 		"INGAME_PLAYERS" "Players: ^6BA6C400%s1"
 		"TOTAL_SERVERS" "Servers: ^C46C6C00%s1"
 
-		// server browser regions
-		"CANADA_NORTH" "CA North"
-		"CANADA_EAST" "CA East"
-		"CANADA_WEST" "CA West"
-		"CANADA" "CA"
+        // server browser regions
+        "CANADA_NORTH" "CA North"
+        "CANADA_EAST" "CA East"
+        "CANADA_WEST" "CA West"
+        "CANADA" "CA"
 
-		"CHINA" "CN"
+        "CHINA" "CN"
 
-		"RUSSIA" "RU"
+        "RUSSIA" "RU"
 
-		"AUSTRALIA" "AUS"
+        "AUSTRALIA" "AUS"
 
-		"EUROPE_NORTH" "EU North"
-		"EUROPE_EAST" "EU East"
-		"EUROPE_SOUTH" "EU South"
-		"EUROPE_WEST" "EU West"
-		"EUROPE" "EU"
+        "AFRICA" "Africa"
 
-		"US_NORTH" "US North"
-		"US_EAST" "US East"
-		"US_SOUTH" "US South"
-		"US_WEST" "US West"
-		"US" "US"
+        "ANTARCTICA" "Antarctica"
+
+        "ASIA_CENTRAL" "Asia Central"
+        "ASIA_EAST" "Asia East"
+        "ASIA_SOUTH" "Asia South"
+        "ASIA_WEST" "Asia West"
+        "ASIA" "Asia"
+
+        "AMERICAS" "Americas"
+
+        "EUROPE_NORTH" "EU North"
+        "EUROPE_EAST" "EU East"
+        "EUROPE_SOUTH" "EU South"
+        "EUROPE_WEST" "EU West"
+        "EUROPE" "EU"
+
+        "US_CENTRAL" "US Central"
+        "US_EAST" "US East"
+        "US_SOUTH" "US South"
+        "US_WEST" "US West"
+        "US" "US"
 
 		// Mods menu
 		"SHOW" "Show"
