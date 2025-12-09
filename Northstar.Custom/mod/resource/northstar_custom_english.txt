@@ -2,7 +2,7 @@
 {
 	"Language" "english"
 	"Tokens"
-	{	
+	{
 		"WPN_PEACEKRABER" "Peacekraber Wow"
 		"MELEE_KUNAI" "Kunai"
 		
