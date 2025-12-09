@@ -3,7 +3,7 @@
 	"Language" "english"
 	"Tokens"
 	{
-		"WPN_PEACEKRABER" "Peacekraber Wow"
+		"WPN_PEACEKRABER" "Peacekraber"
 		"MELEE_KUNAI" "Kunai"
 		
 		"PL_sbox" "Sandbox"
