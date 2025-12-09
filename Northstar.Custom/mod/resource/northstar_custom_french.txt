@@ -2,6 +2,7 @@
 {
 	"Language" "french"
 	"Tokens"
+	
 	{
 		"PL_sbox" "Bac à sable"
 		"PL_sbox_lobby" "Lobby: Bac à sable"
